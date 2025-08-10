@@ -1,0 +1,15 @@
+---
+- name: creating a users
+  hosts: all
+  tasks: 
+
+     - name: user creation 
+       user: 
+
+         name: Dummy
+         password: 6689
+         uid: 88899
+         comment: 'a super user'
+         
+      
+...

@@ -1,0 +1,12 @@
+---
+- name: install docker and run
+  hosts: all
+  tasks: 
+
+     - name: install the docker 
+       shell: curl -fsSL https://get.docker.com -o install-docker.sh
+
+     - name: 
+       shell: sudo sh install-docker.sh
+
+...

@@ -1,0 +1,13 @@
+---
+- name: creation of the users
+  hosts: all
+  tasks: 
+        - name: user creation
+          user:
+              name: Das
+              password: Das658
+              uid: 8898
+              comment: "a super user"
+              shell: /bin/bash
+              home: /etc/tmp 
+...

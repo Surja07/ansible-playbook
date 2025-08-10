@@ -1,0 +1,16 @@
+---
+- name: creating on all the servers
+  hosts: all
+  tasks:
+
+      - name: creating users
+        user:
+
+          name: Rocky
+          password: Rocky@3ii3
+          uid: 5558
+          shell: /bin/bash
+          home: /home/tmp/Rocky
+          
+...
+

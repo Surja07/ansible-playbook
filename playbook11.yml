@@ -1,0 +1,13 @@
+---
+ - name : git app on other servers 
+   hosts: all
+   tasks: 
+
+    - name: git installation
+      apt: 
+
+        name: install git
+        state: present
+        update_cache: yes 
+
+...          

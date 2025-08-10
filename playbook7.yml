@@ -1,0 +1,15 @@
+---
+- name: creating on all the servers
+  hosts: all
+  tasks: 
+
+      - name: creating users
+        user:
+
+          name: Ramu1
+          password: Ramu989
+          uid: 8889
+          shell: /bin/bash
+          home: /etc/bin
+          expires: 220229
+...

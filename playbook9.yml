@@ -1,0 +1,15 @@
+---
+- name: Create user with expiry date
+  hosts: all
+  tasks:
+
+    - name: Add user with expiration
+      user:
+
+        name: Rockyy
+        password: Rockyy8889
+        uid: 5577
+        shell: /bin/bash
+        home: /home/tmp/Rocky
+        expiredate: '2026-02-22'  
+...

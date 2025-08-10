@@ -1,0 +1,17 @@
+---
+- name: install apache2 on other servers
+  hosts: all
+  tasks:
+
+      - name: apache2  
+        apt:
+
+          name: apache2
+          state: present
+          update_cache: yes
+
+      - name: restart apache2
+        service: 
+          name: apache2
+          state: restarted
+...

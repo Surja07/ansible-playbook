@@ -1,0 +1,21 @@
+---
+- name : install git all the servers 
+  hosts : all
+  tasks:
+
+     - name: install git all on the slave
+       apt:
+          name: git
+          state: present
+          update_cache: yes
+
+     - name: clone a repo from  git hub
+       git:
+          repo: https://github.com/Surja07/practice-repo-GIT-.git
+          dest: tmp/mygit/
+
+     - name: Delete the filenew from the github
+       file:
+        name: /tmp/mygit/
+        state: absent 
+...

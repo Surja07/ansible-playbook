@@ -1,0 +1,14 @@
+---
+- name: creating users on the servers
+  hosts: all
+  tasks:
+
+    - name: user creation
+      user:
+         name: Rocket
+         password: Rocket359
+         uid: 2268
+         shell: /bin/bash
+         comment: "a super user"
+
+...
