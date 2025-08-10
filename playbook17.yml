@@ -1,0 +1,25 @@
+---
+- name: create a user and copy the file and give the permssion 
+  hosts: all
+  tasks:
+
+    - name: create a users
+      user: 
+       name: gobi
+       password: gobli123l
+       uid: 2822
+       comment: 'a normal user'
+
+    - name: copy this uer to another server with permission 
+      copy: 
+        src: /etc/passwd
+        dest: /tmp/gobi
+
+    - name: change the permission of the files
+      file:
+        name: /tmp/gobi/passwd
+        state: touch
+        mode: 666
+        owner: gobi
+        group: root
+...
