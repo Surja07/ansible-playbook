@@ -1,0 +1,9 @@
+---
+- name: Copy file from controller to another server
+  hosts: 172.31.17.240
+  tasks:
+    - name: Copy file from controller to another server
+      copy:
+        src: home/ubuntu/file3   
+        dest: /tmp/file3         
+...

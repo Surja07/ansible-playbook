@@ -1,0 +1,9 @@
+---
+- name: Copy file from controller to target server
+  hosts: target_server
+  tasks:
+    - name: Copy file from controller to target
+      copy:
+        src: /home/ubuntu/file3   
+        dest: /tmp/file3          
+...

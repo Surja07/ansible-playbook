@@ -1,0 +1,12 @@
+---
+- name: implementing global scope vairbale
+  hosts: all
+  tasks:
+
+    - name: install /uninstall/ s/w app's
+      apt:
+
+        name: "{{a}}"
+        state: "{{b}}"
+        update_cache: "{{c}}" 
+...

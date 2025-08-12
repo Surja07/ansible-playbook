@@ -1,0 +1,10 @@
+---
+  - name: Fetch the file from server1
+    hosts: 172.31.17.240
+    tasks:
+      - name: Fetch the file
+        fetch:
+          src: /home/ubuntu/file2
+          dest: /home/ubuntu/demo
+
+...
