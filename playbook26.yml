@@ -1,0 +1,19 @@
+---
+- name: install tomcat10 - install with play scope vairables
+  hosts: all
+  vars:
+      a: tomcat10
+      b: present
+      c: yes
+
+  tasks:
+    - name: install tomcat
+      apt:
+
+        name: "{{a}}"
+        state: "{{b}}"
+        update_cache: "{{c}}"
+
+...
+
+

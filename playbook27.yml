@@ -1,0 +1,15 @@
+---
+- name: create a vairable playbook with git installation 
+  hosts: all
+  vars:
+    a: git
+    b: absent
+    c: no
+
+  tasks:
+    - name: install git
+      apt:
+        name: "{{a}}" 
+        state: "{{b}}"
+        update_cache: "{{c}}"
+...
