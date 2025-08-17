@@ -1,0 +1,15 @@
+---
+- name: install maven, remove tomcat, update git
+  hosts: all
+  tasks:
+    - name: customize app setup
+      apt:
+        name: "{{item.a}}"
+        state: "{{item.b}}"
+        update_cache: "{{item.c}}"
+      with_items:
+           - {a: maven, b: present, c: yes}
+           - {a: tomcat, b: absent, c: no}
+           - {a: git, b: present, c: yes}
+...
+          

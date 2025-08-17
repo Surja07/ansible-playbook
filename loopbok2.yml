@@ -1,0 +1,20 @@
+---
+- name: instal a software application git,tomcat,apache2
+  hosts: all
+  tasks:
+    - name: install the apps
+      apt: 
+        name: "{{item}}"
+        state: present 
+        update_cache: yes
+          
+      with_items:
+         - git
+         - tomcat10
+         - apache2
+
+
+...
+
+
+

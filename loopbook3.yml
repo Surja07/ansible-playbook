@@ -1,0 +1,15 @@
+---
+- name: uninstall the apps git, tomcat, apache2
+  hosts: all
+  tasks:
+
+    - name: Removing the isntalled apps
+      apt:
+        name: "{{item}}"
+        state: absent
+        update_cache: no
+      with_items:
+              - git
+              - tomcat10
+              - apache2
+...

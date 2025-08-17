@@ -1,0 +1,21 @@
+---
+- name: creating a user specifying with the help of copy module
+  hosts: all
+  tasks:
+   - name: configuration of users
+     user:
+        name: "{{item.a}}" 
+        password: "{{item.b}}"
+        home: "{{item.c}}"
+     with_items:
+         - {a: Henry, b: Hen18897, c: /home/Henry}
+         - {a: Henrry, b: henrry5689, c: /tmp/Henrry}
+   - name: copy one to another
+     copy:
+       src: "{{item.a}}"
+       dest: "{{item.b}}"
+     with_items:
+      - {a: /etc/passwd, b: /home/Henry}
+      - {a: /etc/group, b: /tmp/Henrry}
+...
+

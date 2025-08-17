@@ -1,0 +1,16 @@
+---
+- name: loop concept software installation
+  hosts: all
+  tasks:
+    - name: install application
+      apt:
+        name: "{{item}}" 
+        state: present
+        update_cache: yes
+      with_items:
+        - tree
+        - maven
+        - git
+
+
+...
