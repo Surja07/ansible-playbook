@@ -1,0 +1,38 @@
+---
+- name: configuring using tomcat
+  hosts: all
+  tasks:
+    - name: install tomcat tomcat10-admin
+      apt:
+        name: "{{item.a}}"
+        state: "{{item.b}}"
+        update_cache: "{{item.c}}"
+      loop:
+        - {a: tomcat10, b: present, c: yes}
+        - {a: tomcat10-admin, b: present, c: yes}
+    - name: copy tomcat-users.xml file to another server
+      copy:
+        src: tomcat-users.xml
+        dest: /etc/tomcat10/
+    - name: change the port no 8080 to 9090 
+      replace:
+        regexp: 8080
+        replace: 9090
+        path: /etc/tomcat10/server.xml
+    - name: restart the tomcat app
+      service: 
+        name: tomcat10
+        state: restarted
+
+    - name: pause for 10 seconds
+      pause:
+        seconds: 10
+
+    - name: check all the response all the servers 
+      uri:
+        url: "{{item}}"
+        status_code: 200
+      loop:
+        - http://172.31.17.240:9090
+        - http://172.31.24.195:9090
+...
