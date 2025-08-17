@@ -1,0 +1,22 @@
+---
+- name: create a handler concept 
+  hosts: all
+  tasks:
+    - name: install apache2
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+    - name: create a custom context on  index.html
+      copy:
+        content: "WE are the FRESHER OF DEVOPS"
+        dest: /var/www/html/index.html
+      notify: restart apache2
+  
+  handlers:
+     - name: restart apache2
+       service: 
+         name: apache2
+         state: restarted
+... 
+
