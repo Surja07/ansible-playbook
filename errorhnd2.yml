@@ -1,0 +1,22 @@
+
+---
+- name: error handlign concept
+  hosts: all
+  tasks:
+    - block:
+       - name: install git on ubuntu servers
+         apt:
+           name: git
+           state: present
+           update_cache: yes
+      rescue:
+        - name: install git on redhat
+          yum:
+            name: git
+            state: present
+      always:
+        - name: print the message
+          debug:
+            msg: "sports bike sell for just 4.5 CR/only Hurry up limited offer "
+...
+

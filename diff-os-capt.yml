@@ -1,0 +1,17 @@
+---
+- name: install git baseon on os flowers
+  hosts: all
+  tasks:
+    - name: install git on ubuntu server
+      apt:
+        name: git
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "ubuntu"
+    - name : install redhad on redhaat using yum
+      yum:
+        name: git
+        state: presnt
+        update_cache: yes
+      when: ansible_distribution == "Redhat"
+...

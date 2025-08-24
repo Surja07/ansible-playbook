@@ -1,0 +1,39 @@
+---
+- name: Configuring apache2/httpd based on Linux flavour
+  hosts: all
+  tasks:
+    - name: Install apache2 on Ubuntu servers
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+    - name: Install httpd on Redhat servers
+      yum:
+        name: httpd
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "RedHat"
+    - name: Edit the index.html file
+      copy:
+        content: "COMPLICATED ERORR"
+        dest: /var/www/html/index.html
+    - name: Restart apache2 on the Ubuntu servers
+      service:
+        name: apache2
+        state: restarted
+      when: ansible_distribution == "Ubuntu"
+    - name: Restart httpd on Redhat servers
+      service:
+        name: httpd
+        state: restarted
+      when: ansible_distribution == "RedHat"
+    - name: Check apache2/httpd response on all the servers
+      uri:
+        url: "{{item}}"
+        status_code: 200
+      with_items: 
+        - http://172.31.17.240
+        - http://172.31.24.195
+        - http://172.31.37.160
+...

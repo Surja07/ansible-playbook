@@ -1,0 +1,44 @@
+---
+- name: configure apache2 /httpd based on liniux flavor
+  hosts: all
+  tasks:
+   - name: install apache2 os server
+     apt:
+       name: apache2
+       state: present
+       update_cache: yes
+     when: ansible_distribution == "Ubuntu"
+   - name: instlal httpd on Redhat servers
+     yum:
+       name: httpd
+       state: present
+       update_cache: yes
+     when: ansible_distribution == "RedHat"
+   - name: edit the index. html file
+     copy:
+       content: "MY bikes cars and cycles are for sell its very cheap and very useful branded hurryup"
+       dest: /var/www/html/index.html
+   - name: restart apache2 on the ubuntu server
+     service:
+       name: apache2
+       state: restarted
+     when: ansible_distribution == "Ubuntu"
+   - name: Restarted httpd on redhat server
+     service:
+       name: httpd
+       state: restarted
+     when: ansible_distribution == "Redhat"
+
+   - name: Check if websites return 200 OK
+     uri:
+       url: "{{item}}"
+       status_code: 200
+     with_items:
+        - http://172.31.17.240
+        - http://172.31.24.195
+        - http://172.31.37.160
+
+
+
+
+...

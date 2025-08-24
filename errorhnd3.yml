@@ -1,0 +1,14 @@
+---
+- name: implementing when condition
+  hosts: all
+  vars:
+    a: 10
+  tasks: 
+    - name: create a users
+      user:
+         name: hero
+         password: heroo
+      when: a == 10
+...
+
+

@@ -1,0 +1,22 @@
+---
+- name: using hanlder concept
+  hosts: all
+  tasks: 
+  - name: apache2 with name intall and content
+    apt:
+      name: apache2
+      state: present
+      update_cache: yes
+    notify: check the url response
+  - name: edit the html index file
+    copy:
+      content: "sports bike sell 50% off hurry up limited offer just only 4.5 CR/-"
+      dest: /var/www/html/index.html
+    notify: restart apache2
+  handlers:
+    - name: restart apache2
+      service:
+        name: apache2
+        state: restarted
+...
+   
