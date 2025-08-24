@@ -1,0 +1,10 @@
+---
+- name: check response to all the srver
+  uri:
+    url: "{{item}}"
+    status_code: 200
+  with_items:
+         - http://172.31.17.240
+         - http://172.31.24.195
+...
+

@@ -1,0 +1,17 @@
+---
+- name: calling childplaybook install.yml
+  hosts: all
+  tasks:
+  - name: call playbook for install.yml tasks
+    include_tasks: install.yml
+  - name: call playbook for editindext.yml tasks
+    include_tasks: editindext.yml
+  - name: call playbook for restart.yml tasks
+    include_tasks: restart.yml
+  - name: call playbook for url.yml tasks
+    include_tasks: check_url.yml 
+
+
+    
+...
+

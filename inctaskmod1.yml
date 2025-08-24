@@ -1,0 +1,7 @@
+---
+- name: call child playbook using moduel include task
+  hosts: all
+  tasks:
+    - name: call child playbook
+      include_tasks:  inctaskmod.yml
+... 

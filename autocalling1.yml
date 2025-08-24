@@ -1,0 +1,6 @@
+---
+- name: edit the index. html file
+  copy:
+    content: "Life is so hard 80% of on selling"
+    dest: /var/www/html/index.html
+...

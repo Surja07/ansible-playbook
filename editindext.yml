@@ -1,0 +1,6 @@
+---
+- name: eid the index.html file
+  copy:
+    content: "welcome to hell"
+    dest: /var/www/html/index.html
+...
